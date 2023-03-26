@@ -1,0 +1,47 @@
+﻿@model List<ProductMVC.Models.MultiData>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="d-flex justify-content-center min-vh-100">
+        <form action="" method="post" class=" border-info rounded-3 alert alert-success w-50">
+            <h1 class=" alert alert-warning text-center border-0">Product Information</h1>
+            <a href="/Home/Create" class="btn btn-outline-success mt-3" style="margin-bottom:2%">Create</a>
+            
+            <table class="table table-striped">
+                <tr>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Category Id</th>
+                    <th>Category Name</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.products.ProductId</td>
+                        <td>@item.products.ProductName</td>
+                        <td>@item.categories.CategoryId</td>
+                        <td>@item.categories.CategoryName</td>
+                        <td>
+                            <a class="btn btn-outline-info" href="/Home/Details/@item.products.ProductId">Details</a>
+                            <a class="btn btn-outline-warning" href="/Home/Edit/@item.products.ProductId">Edit</a>
+                            <a class="btn btn-outline-danger" href="/Home/Delete/@item.products.ProductId">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </form>
+    </div>
+</body>
+</html>

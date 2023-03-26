@@ -1,0 +1,56 @@
+﻿@model ProductMVC.Models.CreateViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+   <div class=" d-flex justify-content-center">
+       <div class=" card alert alert-info d-flex m-4 fw-bold w-50 ">
+           @using (Html.BeginForm())
+           {
+               @Html.AntiForgeryToken()
+
+               <div class="form-horizontal">
+                   <h4 class=" alert alert-warning text-center"> New Product !!!</h4>
+                   
+                   @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                   <div class="form-group">
+                       @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+                       <div class="col-md-10">
+                           @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                           @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       @Html.LabelFor(model => model.CategoryId, "Categoryid", htmlAttributes: new { @class = "control-label col-md-2" })
+                       <div class="col-md-10">
+                           @Html.DropDownListFor(x => x.CategoryId, new SelectList(Model.Category, "CategoryId", "CategoryName"), "--Select Category--", htmlAttributes: new { @class = "form-control" })
+                           @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <div class="col-md-offset-2 col-md-10">
+                           <input type="submit" value="Create" class="btn btn-outline-success" style="margin-top:2%" />
+                       </div>
+                   </div>
+               </div>
+           }
+
+           <div>
+               @Html.ActionLink("Back to List", "Index")
+           </div>
+       </div>
+   </div>
+</body>
+</html>

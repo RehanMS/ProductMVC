@@ -1,0 +1,38 @@
+﻿@model ProductMVC.Models.CreateViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class=" d-flex justify-content-center">
+        <div class=" card alert alert-info d-flex m-4 fw-bold w-25 ">
+            <h4 class=" alert alert-warning text-center">Product Details !!!</h4>
+            <div>
+                <dl>
+                    <dt>ProductId</dt>
+                    <dd>@Model.ProductId</dd>
+                </dl>
+                <dl>
+                    <dt>Product Name</dt>
+                    <dd>@Model.ProductName</dd>
+                </dl>
+                <dl>
+                    <dt>CategoryId</dt>
+                    <dd>@Model.CategoryId</dd>
+                </dl>
+            </div>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@model ProductMVC.Models.CreateViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div> 
+        <form action="" method="post" class="d-flex justify-content-center m-4">
+            <div class="card alert alert-info">
+                <h4 class=" alert alert-warning text-center"> Editing Product !!!</h4>
+                <table class="d-flex justify-content-center m-4 fw-bold">
+                    <tr>
+                        <td><label>Product Id</label></td>
+                        <td><input readonly name="ProductId" type="text" value="@Model.ProductId" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Product Name</label></td>
+                        <td><input name="ProductName" type="text" value="@Model.ProductName" /></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.CategoryId, new SelectList(Model.Category, "CategoryId", "CategoryName"), "--Select Category--", htmlAttributes: new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" name="Submit" value="Update" class=" btn btn-outline-warning" />
+                            <br />
+                            @Html.ActionLink("Back to List", "Index")
+                        </td>
+                    </tr>
+                </table>
+            </div>
+           
+        </form>
+    </div>
+</body>
+</html>
